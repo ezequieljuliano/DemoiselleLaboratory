@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                template="/template/main.xhtml"
+                xmlns:crud="http://java.sun.com/jsf/composite/crud">
+    <ui:define name="body">
+        <h:form prependId="false">
+
+            <crud:edit-toolbar managedBean="#{bookmarkMB}" />
+
+            <crud:edit-fields description="Bookmark">
+                <h:panelGrid id="fields" columns="3">
+                    <h:outputLabel value="Identificador: " for="id" styleClass="text-input" />
+                    <h:outputText id="id" value="#{bookmarkMB.bean.id}" />
+                    <p:message for="id" />
+
+                    <h:outputLabel value="Descrição: " for="description" styleClass="text-input" />
+                    <h:inputText id="description" value="#{bookmarkMB.bean.description}" title="Informe a descrição" />
+                    <p:message for="description" />
+
+                    <h:outputLabel value="Link: " for="link" styleClass="text-input" />
+                    <h:inputText id="link" value="#{bookmarkMB.bean.link}" title="Informe o link" />
+                    <p:message for="link" />
+                </h:panelGrid>
+            </crud:edit-fields>
+
+        </h:form>
+    </ui:define>
+</ui:composition>

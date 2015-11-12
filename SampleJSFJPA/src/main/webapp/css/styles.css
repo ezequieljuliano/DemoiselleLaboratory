@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+
+.logo {
+    width: 64px;
+}
+
+.menu {
+
+}
+
+#header {
+    margin-bottom: 0px;
+}
+
+#content {
+    clear: both;
+}
