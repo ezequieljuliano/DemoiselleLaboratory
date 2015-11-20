@@ -1,0 +1,26 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" template="/template/main.xhtml"
+                xmlns:crud="http://java.sun.com/jsf/composite/crud">
+
+    <ui:define name="body">
+        <h:form>
+
+            <crud:list-toolbar managedBean="#{userMB}" />
+
+            <crud:list-datatable managedBean="#{userMB}" description="Usuários">
+                <p:column sortBy="#{domain.id}" style="width:10%;" 
+                          filterBy="#{domain.id}" filterMatchMode="exact" filterStyle="width: 100%">
+                    <f:facet name="header">Identificador</f:facet>
+                    <h:outputText value="#{domain.id}" />
+                </p:column>
+
+                <p:column sortBy="#{domain.username}" style="width:50%;" 
+                          filterBy="#{domain.username}" filterMatchMode="contains" filterStyle="width: 100%">
+                    <f:facet name="header">Username</f:facet>
+                    <h:outputText value="#{domain.username}" />
+                </p:column>
+            </crud:list-datatable> 
+
+        </h:form>
+    </ui:define>
+</ui:composition>

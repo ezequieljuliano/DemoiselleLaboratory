@@ -10,6 +10,11 @@
                 <p:menuitem value="Listar" url="/bookmark-list.jsf" />
             </p:submenu>
 
+            <p:submenu label="Usuários">
+                <p:menuitem value="Inserir" url="/user-edit.jsf" />
+                <p:menuitem value="Listar" url="/user-list.jsf" />
+            </p:submenu>
+
             <p:menuitem value="Sair" url="http://www.frameworkdemoiselle.gov.br/" action="#{securityContext.logout}" />
         </p:menubar>
     </h:form>

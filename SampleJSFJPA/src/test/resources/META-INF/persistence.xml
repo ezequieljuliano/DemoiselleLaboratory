@@ -8,6 +8,7 @@
 	<persistence-unit name="bookmark-ds" transaction-type="RESOURCE_LOCAL">
 
 		<class>org.demoiselle.samplejsfjpa.domain.Bookmark</class>
+                <class>org.demoiselle.samplejsfjpa.domain.User</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
@@ -48,13 +49,13 @@
 
 		<class>org.demoiselle.samplejsfjpa.domain.Bookmark</class>
 
-		<properties>
-			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.format_sql" value="false" />
-			<property name="hibernate.hbm2ddl.auto" value="update" />
-			<property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.JBossTransactionManagerLookup" />
-		</properties>
-	</persistence-unit>
-	-->
+            <properties>
+                    <property name="hibernate.show_sql" value="true" />
+                    <property name="hibernate.format_sql" value="false" />
+                    <property name="hibernate.hbm2ddl.auto" value="update" />
+                    <property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.JBossTransactionManagerLookup" />
+            </properties>
+    </persistence-unit>
+    -->
 
 </persistence>

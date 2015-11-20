@@ -9,7 +9,7 @@
     <composite:implementation>
         <p:toolbar id="toolbarListMenu">
             <p:toolbarGroup id="toolbarGroupListMenu" align="left">
-                <p:commandButton title="Adicionar Novo Registro" value="Novo" icon="ui-icon-document" 
+                <p:commandButton title="Adicionar Novo Registro" value="Novo" icon="ui-icon-document" immediate="true" 
                                  action="#{cc.attrs.managedBean.getNextView}"
                                  actionListener="#{cc.attrs.managedBean.clear}" />
 

@@ -12,31 +12,26 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "tbl_bookmark")
-public class Bookmark implements Serializable {
+@Table(name = "tbl_user")
+public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = SEQUENCE)
-    @Column(name = "bkm_id")
+    @Column(name = "usr_id")
     private Long id;
 
-    @Column(name = "bkm_description")
+    @Column(name = "usr_username")
     @NotNull
-    private String description;
+    private String username;
 
-    @Column(name = "bkm_link")
+    @Column(name = "usr_password")
     @NotNull
-    private String link;
+    private String password;
 
-    public Bookmark() {
+    public User() {
         super();
-    }
-
-    public Bookmark(String description, String link) {
-        this.description = description;
-        this.link = link;
     }
 
     public Long getId() {
@@ -47,20 +42,20 @@ public class Bookmark implements Serializable {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getUsername() {
+        return username;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getLink() {
-        return link;
+    public String getPassword() {
+        return password;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }

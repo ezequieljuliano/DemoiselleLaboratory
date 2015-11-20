@@ -11,17 +11,19 @@
 
             <crud:edit-fields description="Bookmark">
                 <h:panelGrid id="fields" columns="3">
-                    <h:outputLabel value="Identificador: " for="id" styleClass="text-input" />
-                    <h:outputText id="id" value="#{bookmarkMB.bean.id}" />
+                   
+                    <p:outputLabel value="Identificador: " for="id" styleClass="text-input" />
+                    <p:outputLabel id="id" value="#{bookmarkMB.bean.id}" />
                     <p:message for="id" />
 
-                    <h:outputLabel value="Descrição: " for="description" styleClass="text-input" />
-                    <h:inputText id="description" value="#{bookmarkMB.bean.description}" title="Informe a descrição" />
+                    <p:outputLabel value="Descrição: " for="description" styleClass="text-input" />
+                    <p:inputText id="description" value="#{bookmarkMB.bean.description}" title="Informe a descrição" />
                     <p:message for="description" />
 
-                    <h:outputLabel value="Link: " for="link" styleClass="text-input" />
-                    <h:inputText id="link" value="#{bookmarkMB.bean.link}" title="Informe o link" />
+                    <p:outputLabel value="Link: " for="link" styleClass="text-input" />
+                    <p:inputText id="link" value="#{bookmarkMB.bean.link}" title="Informe o link" />
                     <p:message for="link" />
+                    
                 </h:panelGrid>
             </crud:edit-fields>
 
