@@ -1,4 +1,4 @@
-package org.demoiselle.cadastro.rest;
+package org.demoiselle.cadastro.app;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

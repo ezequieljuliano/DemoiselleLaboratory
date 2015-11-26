@@ -1,5 +1,7 @@
 package org.demoiselle.cadastro.rest;
 
+import br.gov.frameworkdemoiselle.BadRequestException;
+import org.demoiselle.cadastro.app.PATCH;
 import javax.validation.constraints.Size;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -11,10 +13,13 @@ import org.hibernate.validator.constraints.NotEmpty;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
 import br.gov.frameworkdemoiselle.util.ValidatePayload;
 import br.gov.frameworkdemoiselle.NotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.annotation.XmlRootElement;
 import org.demoiselle.cadastro.rest.entity.Pessoa;
@@ -22,6 +27,31 @@ import org.demoiselle.cadastro.rest.persistence.PessoaDAO;
 
 @Path("pessoas")
 public class PessoaREST {
+
+    @GET
+    @Produces("application/json")
+    public List<PessoaListBody> buscar(@QueryParam("filtro") String filtro, @QueryParam("ordem") String ordem) throws Exception {
+        List<PessoaListBody> result = new ArrayList<PessoaListBody>();
+        List<Pessoa> pessoas;
+
+        try {
+            pessoas = PessoaDAO.getInstance().find(filtro, ordem);
+        } catch (IllegalArgumentException cause) {
+            throw new BadRequestException();
+        }
+
+        for (Pessoa pessoa : pessoas) {
+            PessoaListBody body = new PessoaListBody();
+            body.id = pessoa.getId();
+            body.nome = pessoa.getNome();
+            body.email = pessoa.getEmail();
+            body.telefone = pessoa.getTelefone();
+
+            result.add(body);
+        }
+
+        return result.isEmpty() ? null : result;
+    }
 
     @GET
     @Path("{id}")
@@ -134,6 +164,18 @@ public class PessoaREST {
         public String email;
 
         @Size(max = 15)
+        public String telefone;
+    }
+
+    @XmlRootElement
+    public static class PessoaListBody {
+
+        public Integer id;
+
+        public String nome;
+
+        public String email;
+
         public String telefone;
     }
 }
