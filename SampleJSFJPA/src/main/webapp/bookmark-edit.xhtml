@@ -5,13 +5,13 @@
                 template="/template/main.xhtml"
                 xmlns:crud="http://java.sun.com/jsf/composite/crud">
     <ui:define name="body">
-        <h:form prependId="false">
+        <h:form prependId="false" rendered="#{securityMB.hasGuestRole()}">
 
-            <crud:edit-toolbar managedBean="#{bookmarkMB}" />
+            <crud:edittoolbar managedBean="#{bookmarkMB}" />
 
-            <crud:edit-fields description="Bookmark">
+            <crud:editfields description="Bookmark">
                 <h:panelGrid id="fields" columns="3">
-                   
+
                     <p:outputLabel value="Identificador: " for="id" styleClass="text-input" />
                     <p:outputLabel id="id" value="#{bookmarkMB.bean.id}" />
                     <p:message for="id" />
@@ -23,9 +23,9 @@
                     <p:outputLabel value="Link: " for="link" styleClass="text-input" />
                     <p:inputText id="link" value="#{bookmarkMB.bean.link}" title="Informe o link" />
                     <p:message for="link" />
-                    
+
                 </h:panelGrid>
-            </crud:edit-fields>
+            </crud:editfields>
 
         </h:form>
     </ui:define>

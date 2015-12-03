@@ -74,7 +74,7 @@
 		<non-jta-data-source>jdbc/__default</non-jta-data-source>
 
 		<class>org.demoiselle.samplejsfjpa.domain.Bookmark</class>
-                <class>org.demoiselle.samplejsfjpa.domain.User</class>
+                <class>org.demoiselle.samplejsfjpa.domain.User</class>             
 
 		<properties>
 			<property name="eclipselink.logging.level" value="FINE" />

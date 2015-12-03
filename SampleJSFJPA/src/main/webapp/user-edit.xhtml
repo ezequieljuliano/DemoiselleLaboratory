@@ -5,11 +5,16 @@
                 template="/template/main.xhtml"
                 xmlns:crud="http://java.sun.com/jsf/composite/crud">
     <ui:define name="body">
-        <h:form prependId="false">
+        <h:form prependId="false" rendered="#{securityMB.hasAdminRole()}">
 
-            <crud:edit-toolbar managedBean="#{userMB}" />
+            <crud:edittoolbar managedBean="#{userMB}">
 
-            <crud:edit-fields description="Usuário">
+                <p:commandButton value="Alterar Senha" onclick="PF('dlgChangePassword').show(); return false;" 
+                                 rendered="#{userMB.updateMode}" type="button" image="ui-icon ui-icon-key"/>
+
+            </crud:edittoolbar>
+
+            <crud:editfields description="Usuário">
                 <h:panelGrid id="fields" columns="3">
 
                     <p:outputLabel value="Identificador: " for="id" styleClass="text-input" />
@@ -21,11 +26,27 @@
                     <p:message for="username" />
 
                     <p:outputLabel value="* Password: " for="password" styleClass="text-input" />
-                    <p:password id="password" value="#{userMB.bean.password}" redisplay="true" title="Informe o password" />
+                    <p:password id="password" value="#{userMB.bean.password}" redisplay="true" title="Informe o password" disabled="#{userMB.updateMode}"  />
                     <p:message for="password" />
 
                 </h:panelGrid>
-            </crud:edit-fields>
+            </crud:editfields>
+
+            <p:dialog header="Alterar Senha" widgetVar="dlgChangePassword" modal="true" closable="true" showEffect="bounce" hideEffect="explode">                                                     
+                <h:panelGrid columns="2">
+                    <h:outputLabel for="edtNewPassword" value="Nova Senha: " />  
+                    <p:password id="edtNewPassword" value="#{userMB.newPassword}" style="width: 250px"  /> 
+                </h:panelGrid>
+                <br /> 
+                <h:panelGrid columns="2">
+                    <p:commandButton value="Salvar" ajax="false" action="#{userMB.changePassword()}" 
+                                     image="ui-icon ui-icon-disk"  style="float: right;"
+                                     oncomplete="PF('dlgChangePassword').hide();" update="@form" />
+
+                    <p:commandButton value="Cancelar" ajax="false" immediate="true" type="button" onclick="PF('dlgChangePassword').hide();" 
+                                     image="ui-icon ui-icon-arrowreturn-1-w" style="float: left;"/>
+                </h:panelGrid>
+            </p:dialog>
 
         </h:form>
     </ui:define>

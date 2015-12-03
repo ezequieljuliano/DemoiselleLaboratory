@@ -33,12 +33,12 @@
                 <p:confirmDialog message="Tem certeza que deseja deletar o registro?" showEffect="bounce" hideEffect="explode"
                                  header="Deletar Registro" severity="alert" widgetVar="confirmation">
 
-                    <p:commandButton value="Sim, claro!" 
+                    <p:commandButton value="Sim, claro!" image="ui-icon-check"
                                      action="#{cc.attrs.managedBean.delete}"                        
                                      onclick="PF('confirmation').hide();" 
                                      immediate="true" update="@form" />
 
-                    <p:commandButton value="Não, desculpe!" 
+                    <p:commandButton value="Não, desculpe!" image="ui-icon-arrowreturnthick-1-w"
                                      onclick="PF('confirmation').hide();" 
                                      type="button" />
                 </p:confirmDialog>

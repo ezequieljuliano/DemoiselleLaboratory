@@ -3,19 +3,21 @@
                 xmlns:h="http://java.sun.com/jsf/html" 
                 xmlns:ui="http://java.sun.com/jsf/facelets">
 
-    <h:form>
+    <h:form rendered="#{securityMB.loggedIn}">
         <p:menubar>
-            <p:submenu label="Bookmarks">
-                <p:menuitem value="Inserir" url="/bookmark-edit.jsf" />
-                <p:menuitem value="Listar" url="/bookmark-list.jsf" />
+
+            <p:submenu label="Bookmarks" rendered="#{securityMB.hasGuestRole()}" icon="ui-icon-folder-open">
+                <p:menuitem value="Inserir" url="/bookmark-edit.jsf" icon="ui-icon-clipboard" />
+                <p:menuitem value="Listar" url="/bookmark-list.jsf" icon="ui-icon-clipboard" />
             </p:submenu>
 
-            <p:submenu label="Usuários">
-                <p:menuitem value="Inserir" url="/user-edit.jsf" />
-                <p:menuitem value="Listar" url="/user-list.jsf" />
+            <p:submenu label="Usuários" rendered="#{securityMB.hasAdminRole()}" icon="ui-icon-folder-open">
+                <p:menuitem value="Inserir" url="/user-edit.jsf" icon="ui-icon-clipboard" />
+                <p:menuitem value="Listar" url="/user-list.jsf" icon="ui-icon-clipboard" />
             </p:submenu>
 
-            <p:menuitem value="Sair" url="http://www.frameworkdemoiselle.gov.br/" action="#{securityContext.logout}" />
+            <p:menuitem value="Sair" action="#{loginMB.doLogout()}" ajax="false" icon="ui-icon-closethick" />
+
         </p:menubar>
     </h:form>
 

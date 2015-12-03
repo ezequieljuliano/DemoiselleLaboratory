@@ -1,0 +1,66 @@
+<html xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <f:view contentType="text/html" locale="#{locales.currentLocale}" />
+
+    <h:head>
+        <title>#{messages['main.app.title']}</title>
+        <link type="text/css" rel="stylesheet" href="css/styles.css" />
+        <style type="text/css">*{font-size: 12px}</style>
+    </h:head>
+
+    <h:body style="background-color:#f1f1f1">
+
+        <p:growl id="messages" globalOnly="true" showDetail="false" sticky="false"/>
+
+        <p:dialog header="#{messages['main.app.title']} | Autenticação" 
+                  modal="true"                    
+                  closable="false"  
+                  position="center"  
+                  widgetVar="dlgLogin"  
+                  minWidth="400"  
+                  width="400"  
+                  showEffect="slide"   
+                  draggable="false"  
+                  resizable="false"  
+                  visible="true">
+            <h:form>
+                <h:panelGrid columns="1" width="100%">    
+                    <h:panelGrid columns="1" width="100%" style="text-align: center">
+                        <p:graphicImage url="images/login.jpg" width="200" height="52" />                   
+                    </h:panelGrid>
+                    <h:panelGrid columns="1" width="100%"> 
+
+                        <h:outputLabel value="Nome de Usuário" for="edtUsername"/>
+                        <p:inputText value="#{loginMB.username}" id="edtUsername" style="width: 100%"/>
+
+                        <h:outputLabel value="Senha" for="edtPassword"/>
+                        <p:password value="#{loginMB.password}" id="edtPassword" feedback="false" style="width: 100%"/>
+
+                        <p:commandButton icon="ui-icon-circle-check" value="Acessar" action="#{loginMB.doLogin()}" 
+                                         ajax="false" style="float: right;"/>
+                    </h:panelGrid>
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+
+        <!--modal ajax status here-->
+        <div id="footer" style="position: fixed; bottom: 0px; right: 0px; width: 100%;">
+            <p:ajaxStatus>
+                <f:facet name="start">
+                    <p:panel>
+                        <p:graphicImage url="images/loading.gif" style="vertical-align: middle;"/>
+                        <h2 style="display: inline; margin-left: 15px;">Carregando...</h2>
+                    </p:panel>
+                </f:facet>
+
+                <f:facet name="complete">
+                    <h:outputText value="" />
+                </f:facet>
+            </p:ajaxStatus>
+        </div>
+        <!--modal ajax status end-->
+
+    </h:body>    
+</html>

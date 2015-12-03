@@ -9,7 +9,6 @@ import br.gov.frameworkdemoiselle.message.SeverityType;
 import br.gov.frameworkdemoiselle.pagination.Pagination;
 import br.gov.frameworkdemoiselle.pagination.PaginationContext;
 import br.gov.frameworkdemoiselle.template.PageBean;
-import br.gov.frameworkdemoiselle.transaction.Transactional;
 import br.gov.frameworkdemoiselle.util.Beans;
 import br.gov.frameworkdemoiselle.util.Faces;
 import br.gov.frameworkdemoiselle.util.Parameter;
@@ -310,7 +309,6 @@ public abstract class GenericMB<Domain, Key, BC extends GenericBC> implements Pa
 
     }
 
-    @Transactional
     public String delete() {
         try {
             onBeforeDelete();
@@ -323,7 +321,6 @@ public abstract class GenericMB<Domain, Key, BC extends GenericBC> implements Pa
         return getPreviousView();
     }
 
-    @Transactional
     public String insert() {
         try {
             onBeforeInsert();
@@ -338,7 +335,6 @@ public abstract class GenericMB<Domain, Key, BC extends GenericBC> implements Pa
         return getPreviousView();
     }
 
-    @Transactional
     public String update() {
         try {
             onBeforeUpdate();

@@ -3,11 +3,11 @@
                 xmlns:crud="http://java.sun.com/jsf/composite/crud">
 
     <ui:define name="body">
-        <h:form>
+        <h:form rendered="#{securityMB.hasGuestRole()}">
 
-            <crud:list-toolbar managedBean="#{bookmarkMB}" />
+            <crud:listtoolbar managedBean="#{bookmarkMB}" />
 
-            <crud:list-datatable managedBean="#{bookmarkMB}" description="Bookmarks">
+            <crud:listdatatable managedBean="#{bookmarkMB}" description="Bookmarks">
                 <p:column sortBy="#{domain.id}" style="width:10%;" 
                           filterBy="#{domain.id}" filterMatchMode="exact" filterStyle="width: 100%">
                     <f:facet name="header">Identificador</f:facet>
@@ -25,7 +25,7 @@
                     <f:facet name="header">Link</f:facet>
                     <h:outputText value="#{domain.link}" />
                 </p:column>
-            </crud:list-datatable> 
+            </crud:listdatatable> 
 
         </h:form>
     </ui:define>

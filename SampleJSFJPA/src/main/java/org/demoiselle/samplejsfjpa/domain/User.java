@@ -6,6 +6,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -29,6 +31,10 @@ public class User implements Serializable {
     @Column(name = "usr_password")
     @NotNull
     private String password;
+
+    @Column(name = "usu_role")
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.guest;
 
     public User() {
         super();
@@ -56,6 +62,14 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
 }

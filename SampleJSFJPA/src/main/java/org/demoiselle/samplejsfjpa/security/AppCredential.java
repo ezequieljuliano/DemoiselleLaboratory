@@ -1,12 +1,12 @@
 package org.demoiselle.samplejsfjpa.security;
 
 import java.io.Serializable;
-import javax.faces.bean.SessionScoped;
-import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
 import org.demoiselle.samplejsfjpa.domain.User;
+import javax.inject.Named;
 
 @SessionScoped
-@Named("credential")
+@Named
 public class AppCredential implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -18,7 +18,6 @@ public class AppCredential implements Serializable {
     private User user;
 
     public AppCredential() {
-        super();
     }
 
     public String getUsername() {

@@ -3,11 +3,11 @@
                 xmlns:crud="http://java.sun.com/jsf/composite/crud">
 
     <ui:define name="body">
-        <h:form>
+        <h:form rendered="#{securityMB.hasAdminRole()}">
 
-            <crud:list-toolbar managedBean="#{userMB}" />
+            <crud:listtoolbar managedBean="#{userMB}" />
 
-            <crud:list-datatable managedBean="#{userMB}" description="Usuários">
+            <crud:listdatatable managedBean="#{userMB}" description="Usuários">
                 <p:column sortBy="#{domain.id}" style="width:10%;" 
                           filterBy="#{domain.id}" filterMatchMode="exact" filterStyle="width: 100%">
                     <f:facet name="header">Identificador</f:facet>
@@ -19,7 +19,7 @@
                     <f:facet name="header">Username</f:facet>
                     <h:outputText value="#{domain.username}" />
                 </p:column>
-            </crud:list-datatable> 
+            </crud:listdatatable> 
 
         </h:form>
     </ui:define>

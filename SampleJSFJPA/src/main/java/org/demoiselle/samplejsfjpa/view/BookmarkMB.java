@@ -11,5 +11,7 @@ import org.demoiselle.samplejsfjpa.domain.Bookmark;
 @NextView("/bookmark-edit.xhtml")
 @PreviousView("/bookmark-list.xhtml")
 public class BookmarkMB extends GenericMB<Bookmark, Long, BookmarkBC> {
-   
+
+    private static final long serialVersionUID = 1L;
+
 }
