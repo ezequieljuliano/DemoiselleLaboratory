@@ -18,7 +18,6 @@ public class SecurityMB implements Serializable {
     }
 
     public boolean isLoggedIn() {
-        securityContext.checkLoggedIn();
         return securityContext.isLoggedIn();
     }
 

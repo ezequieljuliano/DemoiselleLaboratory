@@ -45,7 +45,7 @@ public class AppAuthenticator implements Authenticator {
 
     @Override
     public Principal getUser() {
-        if (authenticated) {
+        if ((authenticated) && (credential.getUser() != null)) {
             return new Principal() {
                 @Override
                 public String getName() {
