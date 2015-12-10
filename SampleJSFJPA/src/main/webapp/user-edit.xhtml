@@ -32,7 +32,7 @@
                 </h:panelGrid>
             </crud:editfields>
 
-            <p:dialog header="Alterar Senha" widgetVar="dlgChangePassword" modal="true" closable="true" showEffect="bounce" hideEffect="explode">                                                     
+            <crud:stddialog dlgHeader="Alterar Senha" dlgWidgetVar="dlgChangePassword">
                 <h:panelGrid columns="2">
                     <h:outputLabel for="edtNewPassword" value="Nova Senha: " />  
                     <p:password id="edtNewPassword" value="#{userMB.newPassword}" style="width: 250px"  /> 
@@ -46,7 +46,7 @@
                     <p:commandButton value="Cancelar" ajax="false" immediate="true" type="button" onclick="PF('dlgChangePassword').hide();" 
                                      image="ui-icon ui-icon-arrowreturn-1-w" style="float: left;"/>
                 </h:panelGrid>
-            </p:dialog>
+            </crud:stddialog>
 
         </h:form>
     </ui:define>
