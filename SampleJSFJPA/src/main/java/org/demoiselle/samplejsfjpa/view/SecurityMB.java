@@ -24,7 +24,7 @@ public class SecurityMB implements Serializable {
     public boolean hasAdminRole() {
         boolean hasRole = false;
         if (isLoggedIn()) {
-            hasRole = securityContext.hasRole(Role.admin.name());
+            hasRole = securityContext.hasRole(Role.ADMIN.name());
         }
         return hasRole;
     }
@@ -32,7 +32,7 @@ public class SecurityMB implements Serializable {
     public boolean hasGuestRole() {
         boolean hasRole = false;
         if (isLoggedIn()) {
-            hasRole = securityContext.hasRole(Role.admin.name()) || securityContext.hasRole(Role.guest.name());
+            hasRole = securityContext.hasRole(Role.ADMIN.name()) || securityContext.hasRole(Role.GUEST.name());
         }
         return hasRole;
     }

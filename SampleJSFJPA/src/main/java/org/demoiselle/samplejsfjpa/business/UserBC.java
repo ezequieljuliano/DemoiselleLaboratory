@@ -24,13 +24,13 @@ public class UserBC extends GenericBC<User, Long, UserDAO> {
             User adminUser = new User();
             adminUser.setUsername("admin");
             adminUser.setPassword("admin");
-            adminUser.setRole(Role.admin);
+            adminUser.setRole(Role.ADMIN);
             insert(adminUser);
 
             User guestUser = new User();
             guestUser.setUsername("guest");
             guestUser.setPassword("guest");
-            guestUser.setRole(Role.guest);
+            guestUser.setRole(Role.GUEST);
             insert(guestUser);
         }
     }
