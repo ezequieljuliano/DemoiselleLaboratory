@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
+
+    <composite:interface>
+        <composite:attribute name="managedBean" required="true" />
+    </composite:interface>
+
+    <composite:implementation>
+        <p:toolbar id="toolbarEditMenu">
+            <p:toolbarGroup id="toolbarGroupEditMenu" align="left">
+                <p:commandButton title="Voltar para Listagem" value="Voltar" icon="ui-icon-arrowthick-1-w" immediate="true" 
+                                 action="#{cc.attrs.managedBean.getPreviousView}"
+                                 actionListener="#{cc.attrs.managedBean.clear}" />
+
+                <p:commandButton title="Adicionar Novo Registro" value="Novo" icon="ui-icon-document" update="@form" immediate="true" 
+                                 action="#{cc.attrs.managedBean.getNextView}"
+                                 actionListener="#{cc.attrs.managedBean.clear}" 
+                                 rendered="#{cc.attrs.managedBean.updateMode}"/>
+
+                <p:commandButton title="Salvar o Registro Atual" value="Salvar" icon="ui-icon-disk" update="@form" 
+                                 action="#{cc.attrs.managedBean.insert}"
+                                 rendered="#{!cc.attrs.managedBean.updateMode}" /> 
+
+                <p:commandButton title="Atualizar o Registro Atual" value="Atualizar" icon="ui-icon-disk" update="@form" 
+                                 action="#{cc.attrs.managedBean.update}"
+                                 rendered="#{cc.attrs.managedBean.updateMode}" />
+
+                <p:commandButton title="Deletar Registro" value="Deletar" icon="ui-icon-trash" 
+                                 onclick="PF('confirmation').show();" type="button"
+                                 rendered="#{cc.attrs.managedBean.updateMode}"/>
+
+                <p:confirmDialog message="Tem certeza que deseja deletar o registro?" showEffect="bounce" hideEffect="explode"
+                                 header="Deletar Registro" severity="alert" widgetVar="confirmation" width="30%" height="30%">
+
+                    <p:commandButton value="Sim, claro!" icon="ui-icon-check"
+                                     action="#{cc.attrs.managedBean.delete}"                        
+                                     onclick="PF('confirmation').hide();" 
+                                     immediate="true" update="@form" />
+
+                    <p:commandButton value="Não, desculpe!" icon="ui-icon-close"
+                                     onclick="PF('confirmation').hide();" 
+                                     type="button" />
+                </p:confirmDialog>
+
+                <composite:insertChildren />
+
+            </p:toolbarGroup>
+        </p:toolbar>
+    </composite:implementation>
+
+</html>

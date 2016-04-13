@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
+
+    <composite:interface>
+        <composite:attribute name="dlgHeader" required="true" />
+        <composite:attribute name="dlgWidgetVar" required="true" />
+        <composite:attribute name="dlgDynamic" required="false" default="false" />
+        <composite:attribute name="dlgModal" required="false" default="true" />
+        <composite:attribute name="dlgAppendTo" required="false" />
+    </composite:interface>
+
+    <composite:implementation>
+
+        <p:dialog header="#{cc.attrs.dlgHeader}" widgetVar="#{cc.attrs.dlgWidgetVar}" appendTo="#{cc.attrs.dlgAppendTo}"
+                  showEffect="bounce" hideEffect="explode" dynamic="#{cc.attrs.dlgDynamic}" modal="#{cc.attrs.dlgModal}" 
+                  resizable="false" closable="true" width="50%" height="50%" position="top" style="margin-top: 10">
+
+            <composite:insertChildren />
+
+        </p:dialog> 
+
+    </composite:implementation>
+</html>
+
