@@ -317,6 +317,7 @@ public abstract class GenericMB<Domain, Key, BC extends GenericBC> implements Pa
             addMessageContext("Registro deletado com sucesso!", SeverityType.INFO);
         } catch (Exception e) {
             addMessageContext(e.getMessage(), SeverityType.ERROR);
+            return "";
         }
         return getPreviousView();
     }
@@ -331,6 +332,7 @@ public abstract class GenericMB<Domain, Key, BC extends GenericBC> implements Pa
             addMessageContext("Registro inserido com sucesso!", SeverityType.INFO);
         } catch (Exception e) {
             addMessageContext(e.getMessage(), SeverityType.ERROR);
+            return "";
         }
         return getPreviousView();
     }
@@ -345,6 +347,7 @@ public abstract class GenericMB<Domain, Key, BC extends GenericBC> implements Pa
             addMessageContext("Registro atualizado com sucesso!", SeverityType.INFO);
         } catch (Exception e) {
             addMessageContext(e.getMessage(), SeverityType.ERROR);
+            return "";
         }
         return getPreviousView();
     }
