@@ -4,6 +4,7 @@ import br.gov.frameworkdemoiselle.DemoiselleException;
 import br.gov.frameworkdemoiselle.annotation.Name;
 import br.gov.frameworkdemoiselle.annotation.NextView;
 import br.gov.frameworkdemoiselle.annotation.PreviousView;
+import br.gov.frameworkdemoiselle.lifecycle.ViewScoped;
 import br.gov.frameworkdemoiselle.message.MessageContext;
 import br.gov.frameworkdemoiselle.message.SeverityType;
 import br.gov.frameworkdemoiselle.pagination.Pagination;
@@ -35,6 +36,7 @@ public abstract class GenericMB<Domain, Key, BC extends GenericBC> implements Pa
     @Inject
     private PaginationContext paginationContext;
 
+    @ViewScoped
     @Inject
     private Parameter<String> id;
 
