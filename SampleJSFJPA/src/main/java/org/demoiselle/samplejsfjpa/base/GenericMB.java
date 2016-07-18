@@ -280,35 +280,27 @@ public abstract class GenericMB<Domain, Key, BC extends GenericBC> implements Pa
     }
 
     protected void onBeforeDelete() {
-
     }
 
     protected void onAfterDelete() {
-
     }
 
     protected void onBeforeInsert() {
-
     }
 
     protected void onAfterInsert() {
-
     }
 
     protected void onBeforeUpdate() {
-
     }
 
     protected void onAfterUpdate() {
-
     }
 
     protected void onBeforeSave() {
-
     }
 
     protected void onAfterSave() {
-
     }
 
     public String delete() {
@@ -351,7 +343,7 @@ public abstract class GenericMB<Domain, Key, BC extends GenericBC> implements Pa
             addMessageContext(e.getMessage(), SeverityType.ERROR);
             return "";
         }
-        return getPreviousView();
+        return "";
     }
 
     protected Domain handleLoad(Key id) {

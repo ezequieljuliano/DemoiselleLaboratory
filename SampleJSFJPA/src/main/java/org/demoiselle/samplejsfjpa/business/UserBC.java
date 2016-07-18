@@ -10,7 +10,7 @@ import org.demoiselle.samplejsfjpa.domain.Role;
 import org.demoiselle.samplejsfjpa.domain.User;
 import org.demoiselle.samplejsfjpa.exception.AppException;
 import org.demoiselle.samplejsfjpa.persistence.UserDAO;
-import org.demoiselle.samplejsfjpa.util.HashUtil;
+import org.demoiselle.samplejsfjpa.util.Hash;
 
 @BusinessController
 public class UserBC extends GenericBC<User, Long, UserDAO> {
@@ -42,14 +42,13 @@ public class UserBC extends GenericBC<User, Long, UserDAO> {
     @Override
     protected void onAfterInsert(User bean) {
         String password = bean.getPassword();
-        bean.setPassword(HashUtil.generate(password, HashUtil.MD5));
+        bean.setPassword(Hash.fromString(password, Hash.MD5));
     }
 
-    @Transactional
     public void changePassword(User bean, String newPassword) throws AppException {
         if (!Strings.isEmpty(newPassword)) {
             String pw = newPassword;
-            bean.setPassword(HashUtil.generate(pw, HashUtil.MD5));
+            bean.setPassword(Hash.fromString(pw, Hash.MD5));
             update(bean);
         } else {
             throw new AppException("Nenhum password foi informado!");

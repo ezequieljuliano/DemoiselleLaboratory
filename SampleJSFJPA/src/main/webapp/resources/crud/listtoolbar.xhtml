@@ -13,7 +13,9 @@
                                  action="#{cc.attrs.managedBean.getNextView}"
                                  actionListener="#{cc.attrs.managedBean.clear}" />
 
-                <p:commandButton title="Deletar Registros Selecionados" value="Deletar Selecionados" icon="ui-icon-trash" 
+                <span class="ui-separator"></span>
+
+                <p:commandButton title="Deletar Registros Selecionados" value="Deletar" icon="ui-icon-trash" 
                                  onclick="PF('confirmation').show();" type="button" />
 
                 <p:confirmDialog message="Tem certeza que deseja deletar os registros selecionados?" showEffect="bounce" hideEffect="explode"

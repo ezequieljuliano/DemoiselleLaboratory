@@ -1,7 +1,8 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"  
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:h="http://java.sun.com/jsf/html" 
-                xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core">
 
     <h:form rendered="#{securityMB.loggedIn}">
         <p:menubar>
@@ -17,6 +18,13 @@
             </p:submenu>
 
             <p:menuitem value="Sair" action="#{loginMB.doLogout()}" ajax="false" icon="ui-icon-closethick" />
+
+            <f:facet name="options">  
+                <h:panelGrid columns="2">
+                    <h:outputText styleClass="ui-icon ui-icon-person" style="margin:0 auto;" /> 
+                    <h:outputText value="#{securityMB.loggedUser.name} | #{securityMB.loggedUser.username}"/>
+                </h:panelGrid>                
+            </f:facet>  
 
         </p:menubar>
     </h:form>

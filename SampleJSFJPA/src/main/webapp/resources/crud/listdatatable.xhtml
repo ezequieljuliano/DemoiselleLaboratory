@@ -29,11 +29,11 @@
                     </p:outputPanel> 
                 </f:facet> 
 
-                <p:column style="width:3%;">
+                <p:column style="width:4%; text-align: center">
                     <h:selectBooleanCheckbox value="#{cc.attrs.managedBean.selection[domain.id]}" />
                 </p:column>
 
-                <p:column style="width:3%;">
+                <p:column style="width:4%; text-align: center">
                     <p:commandButton title="Editar Registro" icon="ui-icon-pencil" action="#{cc.attrs.managedBean.getNextView}"
                                      actionListener="#{cc.attrs.managedBean.clear()}" style="width: 20px; height: 20px;">
                         <f:param name="id" value="#{domain.id}" />

@@ -5,6 +5,7 @@ import br.gov.frameworkdemoiselle.stereotype.ViewController;
 import java.io.Serializable;
 import javax.inject.Inject;
 import org.demoiselle.samplejsfjpa.domain.Role;
+import org.demoiselle.samplejsfjpa.domain.User;
 
 @ViewController
 public class SecurityMB implements Serializable {
@@ -35,6 +36,10 @@ public class SecurityMB implements Serializable {
             hasRole = securityContext.hasRole(Role.ADMIN.name()) || securityContext.hasRole(Role.GUEST.name());
         }
         return hasRole;
+    }
+
+    public User getLoggedUser() {
+        return (User) securityContext.getUser();
     }
 
 }

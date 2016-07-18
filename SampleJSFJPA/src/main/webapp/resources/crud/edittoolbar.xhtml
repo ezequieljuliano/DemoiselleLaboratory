@@ -13,10 +13,14 @@
                                  action="#{cc.attrs.managedBean.getPreviousView}"
                                  actionListener="#{cc.attrs.managedBean.clear}" />
 
+                <span class="ui-separator"></span>
+
                 <p:commandButton title="Adicionar Novo Registro" value="Novo" icon="ui-icon-document" update="@form" immediate="true" 
                                  action="#{cc.attrs.managedBean.getNextView}"
                                  actionListener="#{cc.attrs.managedBean.clear}" 
                                  rendered="#{cc.attrs.managedBean.updateMode}"/>
+
+                <span class="ui-separator"></span>
 
                 <p:commandButton title="Salvar o Registro Atual" value="Salvar" icon="ui-icon-disk" update="@form" 
                                  action="#{cc.attrs.managedBean.insert}"
@@ -25,6 +29,8 @@
                 <p:commandButton title="Atualizar o Registro Atual" value="Atualizar" icon="ui-icon-disk" update="@form" 
                                  action="#{cc.attrs.managedBean.update}"
                                  rendered="#{cc.attrs.managedBean.updateMode}" />
+
+                <span class="ui-separator"></span>
 
                 <p:commandButton title="Deletar Registro" value="Deletar" icon="ui-icon-trash" 
                                  onclick="PF('confirmation').show();" type="button"
