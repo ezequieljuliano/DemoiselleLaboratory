@@ -70,7 +70,8 @@
 	-->
 
 	<!-- If you are using GlassFish 3 with non JTA transaction then use this persistence-unit -->
-	<persistence-unit name="bookmark-ds" transaction-type="RESOURCE_LOCAL">
+<!--	
+    <persistence-unit name="bookmark-ds" transaction-type="RESOURCE_LOCAL">
 		<non-jta-data-source>jdbc/__default</non-jta-data-source>
 
 		<class>org.demoiselle.samplejsfjpa.domain.Bookmark</class>
@@ -82,6 +83,7 @@
 			<property name="eclipselink.ddl-generation.output-mode" value="database" />
 		</properties>
 	</persistence-unit>
+-->
 
 	<!-- If you are using GlassFish 3 with JTA transaction then use this persistence-unit -->
 	<!--
@@ -90,31 +92,32 @@
 
 		<class>org.demoiselle.samplejsfjpa.domain.Bookmark</class>
 
-		<properties>
-			<property name="eclipselink.logging.level" value="FINE" />
-			<property name="eclipselink.ddl-generation" value="create-tables" />
-			<property name="eclipselink.ddl-generation.output-mode" value="database" />
-		</properties>
-	</persistence-unit>
-	-->
-	
-	<!-- If you are using Tomcat 6 / Tomcat 7 / JUnit then use this persistence-unit -->
-	<!--
-	<persistence-unit name="bookmark-ds" transaction-type="RESOURCE_LOCAL">
-
-		<class>org.demoiselle.samplejsfjpa.domain.Bookmark</class>
-		
-		<properties>
-			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
-			<property name="javax.persistence.jdbc.user" value="sa" />
-			<property name="javax.persistence.jdbc.password" value="" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:hsql:." />
-
+            <properties>
                     <property name="eclipselink.logging.level" value="FINE" />
                     <property name="eclipselink.ddl-generation" value="create-tables" />
                     <property name="eclipselink.ddl-generation.output-mode" value="database" />
             </properties>
     </persistence-unit>
     -->
+	
+    <!-- If you are using Tomcat 6 / Tomcat 7 / JUnit then use this persistence-unit -->
+    <!-- -->
+    <persistence-unit name="bookmark-ds" transaction-type="RESOURCE_LOCAL">
+
+        <class>org.demoiselle.samplejsfjpa.domain.Bookmark</class>
+        <class>org.demoiselle.samplejsfjpa.domain.User</class>   
+		
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
+            <property name="javax.persistence.jdbc.user" value="sa" />
+            <property name="javax.persistence.jdbc.password" value="" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:hsql:." />
+
+            <property name="eclipselink.logging.level" value="FINE" />
+            <property name="eclipselink.ddl-generation" value="create-tables" />
+            <property name="eclipselink.ddl-generation.output-mode" value="database" />
+        </properties>
+    </persistence-unit>
+    
 
 </persistence>
