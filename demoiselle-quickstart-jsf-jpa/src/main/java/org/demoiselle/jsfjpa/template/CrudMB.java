@@ -72,49 +72,35 @@ public abstract class CrudMB<Domain, Key, BC extends CrudBC> implements PageBean
 
     @Override
     public String getNextView() {
-
         if (nextView == null) {
             NextView annotation = this.getClass().getAnnotation(NextView.class);
-
             if (annotation != null) {
                 nextView = annotation.value();
-            } else {
-                // TODO Lançar exceção orientando o usuário a anotar sua classe com essa anotação ou então
-                // sobre-escrever este método.
             }
         }
-
         return nextView;
     }
 
     @Override
     public String getPreviousView() {
-
         if (previousView == null) {
             PreviousView annotation = this.getClass().getAnnotation(PreviousView.class);
-
             if (annotation != null) {
                 previousView = annotation.value();
-            } else {
-                // TODO Lançar exceção orientando o usuário a anotar sua classe com essa anotação ou então
-                // sobre-escrever este método.
             }
         }
-
         return previousView;
     }
 
     @Override
     public String getTitle() {
-        // TODO Auto-generated method stub
         return null;
     }
 
-    protected Class<BC> getBusinessClass() {
+    private Class<BC> getBusinessClass() {
         if (this.businessClass == null) {
             this.businessClass = Reflections.getGenericTypeArgument(this.getClass(), 2);
         }
-
         return this.businessClass;
     }
 
@@ -122,7 +108,6 @@ public abstract class CrudMB<Domain, Key, BC extends CrudBC> implements PageBean
         if (this.business == null) {
             this.business = Beans.getReference(getBusinessClass());
         }
-
         return this.business;
     }
 
@@ -133,11 +118,10 @@ public abstract class CrudMB<Domain, Key, BC extends CrudBC> implements PageBean
         this.bean = null;
     }
 
-    protected Class<Domain> getBeanClass() {
+    private Class<Domain> getBeanClass() {
         if (this.beanClass == null) {
             this.beanClass = Reflections.getGenericTypeArgument(this.getClass(), 0);
         }
-
         return this.beanClass;
     }
 
@@ -145,7 +129,6 @@ public abstract class CrudMB<Domain, Key, BC extends CrudBC> implements PageBean
         if (this.dataModel == null) {
             this.dataModel = new ListDataModel<Domain>(this.getResultList());
         }
-
         return this.dataModel;
     }
 
@@ -153,7 +136,6 @@ public abstract class CrudMB<Domain, Key, BC extends CrudBC> implements PageBean
         if (this.resultList == null) {
             this.resultList = handleResultList();
         }
-
         return this.resultList;
     }
 
@@ -221,15 +203,13 @@ public abstract class CrudMB<Domain, Key, BC extends CrudBC> implements PageBean
         if (this.bean == null) {
             initBean();
         }
-
         return this.bean;
     }
 
-    protected Class<Key> getIdClass() {
+    private Class<Key> getIdClass() {
         if (this.idClass == null) {
             this.idClass = Reflections.getGenericTypeArgument(this.getClass(), 1);
         }
-
         return this.idClass;
     }
 
@@ -237,7 +217,6 @@ public abstract class CrudMB<Domain, Key, BC extends CrudBC> implements PageBean
     public Key getId() {
         Converter converter = getIdConverter();
         FacesContext fc = Beans.getReference(FacesContext.class);
-
         if (converter == null && String.class.equals(getIdClass())) {
             return (Key) id.getValue();
 
@@ -273,9 +252,25 @@ public abstract class CrudMB<Domain, Key, BC extends CrudBC> implements PageBean
         this.bean = bean;
     }
 
-    protected void addMessageContext(String string, SeverityType st) {
-        messageContext.add(string, st);
+    private void addMessageContext(String msg, SeverityType st) {
+        messageContext.add(msg, st);
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+    }
+
+    protected void addInformationMessage(String msg) {
+        addMessageContext(msg, SeverityType.INFO);
+    }
+
+    protected void addWarningMessage(String msg) {
+        addMessageContext(msg, SeverityType.WARN);
+    }
+
+    protected void addErrorMessage(String msg) {
+        addMessageContext(msg, SeverityType.ERROR);
+    }
+
+    protected void addFatalMessage(String msg) {
+        addMessageContext(msg, SeverityType.FATAL);
     }
 
     protected void onBeforeDelete() {
@@ -307,9 +302,9 @@ public abstract class CrudMB<Domain, Key, BC extends CrudBC> implements PageBean
             onBeforeDelete();
             getBusiness().delete(getId());
             onAfterDelete();
-            addMessageContext("Registro deletado com sucesso!", SeverityType.INFO);
+            addInformationMessage("Registro deletado com sucesso!");
         } catch (Exception e) {
-            addMessageContext(e.getMessage(), SeverityType.ERROR);
+            addErrorMessage(e.getMessage());
             return "";
         }
         return getPreviousView();
@@ -322,9 +317,9 @@ public abstract class CrudMB<Domain, Key, BC extends CrudBC> implements PageBean
             getBusiness().insert(getBean());
             onAfterInsert();
             onAfterSave();
-            addMessageContext("Registro inserido com sucesso!", SeverityType.INFO);
+            addInformationMessage("Registro inserido com sucesso!");
         } catch (Exception e) {
-            addMessageContext(e.getMessage(), SeverityType.ERROR);
+            addErrorMessage(e.getMessage());
             return "";
         }
         return getPreviousView();
@@ -337,9 +332,9 @@ public abstract class CrudMB<Domain, Key, BC extends CrudBC> implements PageBean
             getBusiness().update(getBean());
             onAfterUpdate();
             onAfterSave();
-            addMessageContext("Registro atualizado com sucesso!", SeverityType.INFO);
+            addInformationMessage("Registro atualizado com sucesso!");
         } catch (Exception e) {
-            addMessageContext(e.getMessage(), SeverityType.ERROR);
+            addErrorMessage(e.getMessage());
             return "";
         }
         return "";

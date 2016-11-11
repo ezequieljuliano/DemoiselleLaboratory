@@ -2,7 +2,6 @@ package org.demoiselle.jsfjpa.view;
 
 import br.gov.frameworkdemoiselle.annotation.NextView;
 import br.gov.frameworkdemoiselle.annotation.PreviousView;
-import br.gov.frameworkdemoiselle.message.SeverityType;
 import br.gov.frameworkdemoiselle.stereotype.ViewController;
 import org.demoiselle.jsfjpa.template.CrudMB;
 import org.demoiselle.jsfjpa.business.UserBC;
@@ -32,9 +31,9 @@ public class UserMB extends CrudMB<User, Long, UserBC> {
         try {
             getBusiness().changePassword(getBean(), getNewPassword());
             setNewPassword("");
-            addMessageContext("Senha alterada com sucesso!", SeverityType.INFO);
+            addInformationMessage("Senha alterada com sucesso!");
         } catch (Exception ex) {
-            addMessageContext(ex.getMessage(), SeverityType.WARN);
+            addWarningMessage(ex.getMessage());
         }
     }
 
