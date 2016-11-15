@@ -4,7 +4,7 @@ import br.gov.frameworkdemoiselle.security.Authorizer;
 import br.gov.frameworkdemoiselle.security.SecurityContext;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
-import org.demoiselle.jsfjpa.domain.Role;
+import org.demoiselle.jsfjpa.domain.enums.Role;
 import org.demoiselle.jsfjpa.exception.AppException;
 
 @SessionScoped

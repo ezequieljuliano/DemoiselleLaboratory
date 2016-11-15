@@ -5,7 +5,7 @@ import br.gov.frameworkdemoiselle.stereotype.BusinessController;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
 import br.gov.frameworkdemoiselle.util.Strings;
 import org.demoiselle.jsfjpa.template.CrudBC;
-import org.demoiselle.jsfjpa.domain.Role;
+import org.demoiselle.jsfjpa.domain.enums.Role;
 import org.demoiselle.jsfjpa.domain.User;
 import org.demoiselle.jsfjpa.exception.AppException;
 import org.demoiselle.jsfjpa.persistence.UserDAO;

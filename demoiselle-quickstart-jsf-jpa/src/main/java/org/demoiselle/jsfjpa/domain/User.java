@@ -1,5 +1,6 @@
 package org.demoiselle.jsfjpa.domain;
 
+import org.demoiselle.jsfjpa.domain.enums.Role;
 import static javax.persistence.GenerationType.SEQUENCE;
 import java.io.Serializable;
 import java.security.Principal;

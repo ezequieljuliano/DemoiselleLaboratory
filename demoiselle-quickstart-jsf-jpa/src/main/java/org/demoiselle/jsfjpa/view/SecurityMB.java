@@ -4,7 +4,7 @@ import br.gov.frameworkdemoiselle.security.SecurityContext;
 import br.gov.frameworkdemoiselle.stereotype.ViewController;
 import java.io.Serializable;
 import javax.inject.Inject;
-import org.demoiselle.jsfjpa.domain.Role;
+import org.demoiselle.jsfjpa.domain.enums.Role;
 import org.demoiselle.jsfjpa.domain.User;
 
 @ViewController

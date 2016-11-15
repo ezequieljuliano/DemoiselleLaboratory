@@ -1,4 +1,4 @@
-package org.demoiselle.jsfjpa.domain;
+package org.demoiselle.jsfjpa.domain.enums;
 
 import java.io.Serializable;
 
